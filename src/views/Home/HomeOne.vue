@@ -3,13 +3,13 @@
 
     <swiper :options="swiperOption">
       <swiper-slide >
-        <img class="w-100" style="height:180px" src="../assets/p1.jpg" alt="">
+        <img class="w-100" style="height:180px" src="../../assets/p1.jpg" alt="">
       </swiper-slide>
       <swiper-slide>
-        <img class="w-100" style="height:180px" src="../assets/p2.jpg" alt="">
+        <img class="w-100" style="height:180px" src="../../assets/p2.jpg" alt="">
       </swiper-slide>
       <swiper-slide>
-        <img class="w-100" style="height:180px" src="../assets/p3.jpg" alt="">
+        <img class="w-100" style="height:180px" src="../../assets/p3.jpg" alt="">
       </swiper-slide>
       <div class="swiper-pagination pagination-home text-right" slot="pagination"></div>
     </swiper>
