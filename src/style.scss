@@ -1,0 +1,191 @@
+*{
+    box-sizing: border-box;
+    outline: none;
+  }
+  html{
+    font-size:13px;
+  }
+  body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.2em;
+    background: #f1f1f1;
+  }
+  a{
+    color: #999
+  }
+
+//colors
+$colors:(
+    "primary":#db9e3f,
+    "white":#fff,
+    "black":#000,
+    "dark-1":#343440,
+    "dark":#222,
+    "grey":#999,
+    "grey-1":#666,
+    "light":#f9f9f9
+);
+@each $colorKey, $color in $colors {
+    .text-#{$colorKey}{
+        color:$color
+    }
+    .bg-#{$colorKey}{
+        background-color:$color; 
+    }
+}
+
+//text
+@each $var in (left,center,right) {
+    .text-#{$var}{
+        text-align: $var!important;
+    }
+}
+
+//height,width
+.w-100{
+    width: 100%;
+}
+.h-100{
+    height: 100%;
+}
+
+
+//font size
+$base-font-size:1rem;
+$font-sizes:(
+    xxs:0.5, //8px
+    xs:0.625, //10px
+    sm:0.75,  //12px
+    md:0.8125, //13px
+    lg:0.875, //14px
+    xl:1 //16px
+    );
+
+    @each $sizeKey,$size in $font-sizes {
+        .fs-#{$sizeKey}{
+            font-size: $size*$base-font-size;
+        }
+    }
+
+
+//flex
+
+.d-flex{
+    display: flex;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+
+$flex-jc: (
+    start:flex-start,
+    end:flex-end,
+    center:center,
+    between:space-between,
+    around:space-around,
+);
+
+@each $key,$value in $flex-jc {
+    .jc-#{$key}{
+        justify-content: $value;
+    }
+}
+
+$flex-ai: (
+    start:flex-start,
+    end:flex-end,
+    center:center,
+    stretch:stretch,
+);
+
+@each $key,$value in $flex-ai {
+    .ai-#{$key}{
+        align-content: $value;
+    }
+}
+
+
+.flex-1{
+    flex:1
+}
+
+.flex-grow-1{
+    flex-grow: 1;
+}
+
+
+//space
+$spacing-types:(m:margin,p:padding);
+$spacing-directions:(t:top,r:right,b:bottom,l:left);
+$spacing-base-size:1rem;
+$spacing-sizes:(
+    0:0,
+    1:0.25,
+    2:0.5,
+    3:1,
+    4:1.5,
+    5:3,
+);
+
+// @each $typeKey,$type in $spacing-types {
+//     //.m-1
+//     .#{$typeKey}-#{$sizeKey}{
+//         #{$type}:$size*$spacing-base-size;
+//     }
+// }
+
+@each $typeKey,$type in $spacing-types {
+
+
+
+    @each $directionKey,$direction in $spacing-directions {
+        @each $sizeKey,$size in $spacing-sizes {
+
+            .#{$typeKey}-#{$sizeKey}{
+                #{$type}:$size*$spacing-base-size;
+            }
+        //.mx-1,my-1
+        .#{$typeKey}x-#{$sizeKey}{
+            #{$type}-left:$size*$spacing-base-size;
+            #{$type}-right:$size*$spacing-base-size;
+            
+        }
+        .#{$typeKey}y-#{$sizeKey}{
+            #{$type}-top:$size*$spacing-base-size;
+            #{$type}-bottom:$size*$spacing-base-size;
+
+        }
+
+            .#{$typeKey}#{$directionKey}-#{$sizeKey}{
+                #{$type}-#{$direction}:$size*$spacing-base-size;
+            }
+        } 
+    }
+    // .#{$typeKey}{
+    //     #{$type}:0    
+    // }
+}
+
+
+//button
+.btn {
+    border: none;
+    border-radius: 0.125rem;
+    font-size:map-get($font-sizes, 'sm' ) * $base-font-size;
+    padding: 0.2rem 0.6rem;
+}
+
+//nav
+
+.nav{
+    .nav-item{
+        border-bottom:3px solid transparent; 
+        padding-bottom: 0.2rem;
+    }
+    .router-link-exact-active{
+        border-bottom:2px solid #fff; 
+    }
+}
+
