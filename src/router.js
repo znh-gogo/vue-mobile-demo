@@ -58,6 +58,11 @@ export default new Router({
       ]
     },
     {
+      path:'/mine/myinfo',
+      name:'myinfo',
+      component: () => import('./views/Mine/myinfo/myinfo.vue')
+    },
+    {
       path: '*',
       redirect: '/home'
     }

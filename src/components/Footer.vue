@@ -13,19 +13,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .footer{
-        height: 5rem;
-        width: 100%;
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        border-top: 1px solid #ccc; 
-        display: flex;
-        div {
-            text-align: center;
-            line-height: 5rem;
-            flex: 1;
-            // cursor: pointer;
-        }
-    }
+
 </style>

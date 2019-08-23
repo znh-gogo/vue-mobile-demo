@@ -6,7 +6,7 @@
         <img src="" height="45px" width="100px">
         </mt-field>
         <div class="loginBtn">
-            <mt-button type="primary" size="large" @click="$router.push('/home')">登陆</mt-button>
+            <mt-button type="primary" size="large" @click="$router.push({path:'/home',query:{account}})">登陆</mt-button>
         </div>
         <div class="d-flex jc-between px-2 py-3">
             <a @click="$router.push('/register')">还没有账号？去注册</a>
