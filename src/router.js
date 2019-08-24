@@ -6,19 +6,21 @@ import Main from './views/Main.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path:'/login',
       name:'login',
-      component: () => import('./views/Login/login.vue')
+      component: () => import('./views/Login/login.vue'),
+      meta:{ isPublic:true}
     },
     {
       path:'/register',
       name:'register',
-      component: () => import('./views/Login/register.vue')
+      component: () => import('./views/Login/register.vue'),
+      meta:{ isPublic:true}
     },
     {
       path: '/',
@@ -68,3 +70,14 @@ export default new Router({
     }
   ]
 })
+
+
+router.beforeEach((to,from,next)=>{
+  if(!to.meta.isPublic && !sessionStorage.getItem("token")){
+    return next('/login')
+  }
+  next()
+})
+
+
+export default router

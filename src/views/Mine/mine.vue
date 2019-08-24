@@ -2,11 +2,11 @@
     <div style="width: 100%;height: 100vh;background-color: #eeeeee;">
         <div class="head">
             <div class="head-detail" @click="$router.push('/mine/myinfo')">
-                <img src="../../assets/123.png" alt="">
+                <img :src="accountInfo.headImg" alt="">
                 <div style="display: flex;;flex-direction: column;justify-content: space-between;width: 100%;">
-                    <div style="font-weight: 700;font-size: 1.8rem;margin-top: 0.5rem">123</div>
+                    <div style="font-weight: 700;font-size: 1.8rem;margin-top: 0.5rem">{{this.accountInfo.nickname}}</div>
                     <div style="display: flex;margin-bottom: 0.2rem; color: #aaa;font-size: 1.4rem;justify-content: space-between;width: 100%;">
-                        <div style="vertical-align: middle;display: inline-block;line-height: 2rem">账号：123</div>
+                        <div style="vertical-align: middle;display: inline-block;line-height: 2rem">账号：{{accountInfo.account}}</div>
                         <img src="../../assets/left.png" alt="" style="width: 1.2rem;height: 1.2rem;margin-right: 0;margin-top: 0.5rem">
                     </div>
                 </div>
@@ -40,7 +40,20 @@
 
 <script>
 export default {
+    data(){
+        return{
+            accountInfo:''
+        }
+    },
+    methods:{
 
+    },
+    mounted (){
+    console.log(JSON.parse(window.sessionStorage.getItem('account')))
+  },
+  created(){
+    this.accountInfo = JSON.parse(window.sessionStorage.getItem('account'))
+  }
 }
 </script>
 

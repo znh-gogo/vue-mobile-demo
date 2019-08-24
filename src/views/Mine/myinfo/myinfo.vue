@@ -8,19 +8,19 @@
                 <!--            <mt-button icon="more" slot="right"></mt-button>-->
             </mt-header>
             <mt-cell title="头像" is-link style="padding: 0.8rem 0;border-bottom: 1px solid #eee">
-                <img src="../../../assets/p2.jpg" alt="" style="width: 3.3rem;height: 3.3rem;">
+                <img :src="accountInfo.headImg" alt="" style="width: 3.3rem;height: 3.3rem;">
             </mt-cell>
             <mt-cell title="名字" is-link style="border-bottom: 1px solid #eee">
-                <span>无尽电刀</span>
+                <span>{{accountInfo.nickname}}</span>
             </mt-cell>
             <mt-cell title="账号" style="border-bottom: 1px solid #eee">
-                <span>aa12345</span>
+                <span>{{accountInfo.account}}</span>
             </mt-cell>
             <mt-cell title="邮箱" is-link style="border-bottom: 1px solid #eee">
-                <span>123456@qq.com</span>
+                <span>{{accountInfo.email}}</span>
             </mt-cell>
             <mt-cell title="个性签名" is-link>
-                <!--            <span>123456@qq.com</span>-->
+                 <span style="width:12rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{accountInfo.description}}</span>
             </mt-cell>
             <mt-cell title="修改密码" is-link style="margin: 1rem 0;">
                 <!--            <span>123456@qq.com</span>-->
@@ -34,8 +34,11 @@
         name: "myinfo",
         data (){
             return {
-                show: true
+                accountInfo: ''
             }
+        },
+        created(){
+            this.accountInfo = JSON.parse(window.sessionStorage.getItem('account'))
         }
     }
 </script>
