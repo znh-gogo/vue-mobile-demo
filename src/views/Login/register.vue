@@ -49,6 +49,11 @@ export default {
             this.veritifyNum = 'http://localhost:3000/photoVerify?'+Math.random();
         },
         register(){
+            if(this.model.account===undefined||this.model.email===undefined||this.model.telephone===undefined||
+            this.model.password===undefined||this.model.verify===undefined){
+                Toast('请输入完整信息')
+                return
+            } else
             api.register(this.model).then((res)=>{
                 // console.log(res)
                 Toast(res.message)

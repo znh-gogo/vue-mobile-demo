@@ -33,26 +33,36 @@
             <img slot="icon" src="../../assets/setting.png" width="24" height="24">
         </mt-cell>
         <div style="width: 100%;text-align: center;margin-top: 2rem;">
-            <mt-button type="primary" @click="$router.push('/login')" style="width: 90%;">退出登陆</mt-button>
+            <mt-button type="primary" @click="logout" style="width: 90%;">退出登陆</mt-button>
         </div>
     </div>
 </template>
 
 <script>
+import api from '../../api'
 export default {
     data(){
         return{
+            accountId:'',
             accountInfo:''
         }
     },
     methods:{
-
+        getUser(){
+            api.showAccount(this.accountId,null).then((res)=>{
+                this.accountInfo = res
+            })
+        },
+        logout(){
+            window.sessionStorage.clear()
+            this.$router.push('/login')
+        }
     },
     mounted (){
-    console.log(JSON.parse(window.sessionStorage.getItem('account')))
+        this.getUser()
   },
   created(){
-    this.accountInfo = JSON.parse(window.sessionStorage.getItem('account'))
+    this.accountId = window.sessionStorage.getItem('id')
   }
 }
 </script>

@@ -11,6 +11,9 @@ import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper)
 Vue.use(MintUI)
 
+window.addEventListener('popstate', function (e) {
+  router.isBack = true
+},false)
 
 new Vue({
   router,

@@ -34,7 +34,7 @@ export default {
                 // console.log(res)
                 if(res.user){
                 window.sessionStorage.setItem('token',res.token)
-                window.sessionStorage.setItem('account',JSON.stringify(res.user))
+                window.sessionStorage.setItem('id',(res.user._id))
                 // this.$store.commit('GET_ACCOUNT',res.user)
                 Toast(res.message)
                 this.$router.push({path:'/home'})
